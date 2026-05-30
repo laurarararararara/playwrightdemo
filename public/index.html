@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playwright 练习站 · 本地 Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <img
+          src="assets/logo.svg"
+          alt="Playwright Demo Logo"
+          width="40"
+          height="40"
+          data-testid="site-logo"
+        />
+        <span>Playwright 练习站</span>
+      </div>
+      <nav aria-label="主导航">
+        <button type="button" class="nav-btn is-active" data-nav="home">首页</button>
+        <button type="button" class="nav-btn" data-nav="products">商品</button>
+        <button type="button" class="nav-btn" data-nav="contact">联系</button>
+      </nav>
+      <button type="button" class="btn btn-ghost" id="theme-toggle" aria-label="切换主题">
+        🌙 深色模式
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" data-section="home">
+        <div class="hero-copy">
+          <p class="eyebrow">本地练习页面</p>
+          <h1>用真实按钮、图片、表单练 Playwright</h1>
+          <p class="subtitle">
+            这个页面专门用来练习点击、输入、弹窗、购物车等常见交互，跑
+            <code>npm run test:headed</code> 可以直接看到浏览器怎么操作。
+          </p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" id="cta-start">开始探索</button>
+            <button type="button" class="btn btn-secondary" id="cta-modal">打开欢迎弹窗</button>
+          </div>
+          <p class="status-line" id="hero-status" data-testid="hero-status">等待你的第一次点击…</p>
+        </div>
+        <figure class="hero-visual">
+          <img
+            src="assets/hero.svg"
+            alt="自动化测试示意图"
+            width="480"
+            height="320"
+            data-testid="hero-image"
+          />
+        </figure>
+      </section>
+
+      <section class="panel counter-panel">
+        <h2>点赞计数器</h2>
+        <p>练习按钮点击与文本断言。</p>
+        <div class="counter-row">
+          <button type="button" class="btn btn-secondary" id="counter-minus" aria-label="减少">−</button>
+          <strong id="counter-value" data-testid="counter-value">0</strong>
+          <button type="button" class="btn btn-primary" id="counter-plus" aria-label="增加">+</button>
+        </div>
+      </section>
+
+      <section class="panel products" data-section="products">
+        <div class="section-head">
+          <h2>精选商品</h2>
+          <p>点击图片下方的按钮加入购物车。</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card" data-testid="product-card">
+            <img src="assets/product-camera.svg" alt="复古相机" width="280" height="180" />
+            <h3>复古相机</h3>
+            <p>练习 <code>getByRole('button')</code> 与列表断言。</p>
+            <div class="product-footer">
+              <span class="price">¥ 299</span>
+              <button type="button" class="btn btn-primary add-to-cart" data-product="复古相机">
+                加入购物车
+              </button>
+            </div>
+          </article>
+          <article class="product-card" data-testid="product-card">
+            <img src="assets/product-headphones.svg" alt="无线耳机" width="280" height="180" />
+            <h3>无线耳机</h3>
+            <p>练习多张卡片、重复元素的定位。</p>
+            <div class="product-footer">
+              <span class="price">¥ 499</span>
+              <button type="button" class="btn btn-primary add-to-cart" data-product="无线耳机">
+                加入购物车
+              </button>
+            </div>
+          </article>
+          <article class="product-card" data-testid="product-card">
+            <img src="assets/product-keyboard.svg" alt="机械键盘" width="280" height="180" />
+            <h3>机械键盘</h3>
+            <p>练习 <code>filter({ hasText })</code> 精确选中。</p>
+            <div class="product-footer">
+              <span class="price">¥ 699</span>
+              <button type="button" class="btn btn-primary add-to-cart" data-product="机械键盘">
+                加入购物车
+              </button>
+            </div>
+          </article>
+        </div>
+        <aside class="cart-summary" aria-live="polite">
+          <h3>购物车</h3>
+          <p id="cart-empty" data-testid="cart-empty">购物车还是空的，去点几个按钮吧。</p>
+          <ul id="cart-items" data-testid="cart-items" hidden></ul>
+          <button type="button" class="btn btn-danger" id="clear-cart" hidden>清空购物车</button>
+        </aside>
+      </section>
+
+      <section class="panel contact" data-section="contact">
+        <div class="section-head">
+          <h2>联系表单</h2>
+          <p>练习输入框、下拉框与表单提交。</p>
+        </div>
+        <form id="contact-form" data-testid="contact-form">
+          <label>
+            姓名
+            <input name="name" type="text" placeholder="怎么称呼你" required />
+          </label>
+          <label>
+            邮箱
+            <input name="email" type="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            主题
+            <select name="topic">
+              <option value="learn">我想学 Playwright</option>
+              <option value="bug">我遇到了 bug</option>
+              <option value="other">其他</option>
+            </select>
+          </label>
+          <label>
+            留言
+            <textarea name="message" rows="4" placeholder="写点什么…" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">发送消息</button>
+            <button type="reset" class="btn btn-ghost">重置</button>
+          </div>
+        </form>
+        <p class="form-result" id="form-result" data-testid="form-result" hidden></p>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="welcome-modal-backdrop" data-testid="welcome-modal" hidden aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button type="button" class="modal-close" id="modal-close" aria-label="关闭弹窗">×</button>
+        <img src="assets/logo.svg" alt="" width="56" height="56" aria-hidden="true" />
+        <h2 id="modal-title">欢迎来到本地练习站</h2>
+        <p>你可以在这里练习：按钮、图片、表单、弹窗、购物车、主题切换。</p>
+        <button type="button" class="btn btn-primary" id="modal-confirm">知道了</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden data-testid="toast"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
