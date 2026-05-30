@@ -89,18 +89,24 @@ npm run report
 
 ### 第一次（只需做一次）
 
-1. 在 GitHub 新建空仓库，例如 `playwright-demo`（不要勾选 README）
-2. 本地推送：
+1. 在 GitHub 新建空仓库并推送代码（已完成可跳过）
+2. 等 **Actions** 里 `Deploy Site` 跑成功（绿色 ✓），会自动创建 `gh-pages` 分支
+3. 打开仓库 **Settings → Pages → Build and deployment**，按下面配置：
 
-```bash
-cd ~/playwright-demo
-git remote add origin https://github.com/你的用户名/playwright-demo.git
-git push -u origin main
-```
+| 选项 | 值 |
+|------|-----|
+| Source | **Deploy from a branch** |
+| Branch | **gh-pages** |
+| Folder | **/ (root)** |
 
-3. 打开仓库 **Settings → Pages → Build and deployment**
-4. **Source** 选 **GitHub Actions**（不是 Deploy from branch）
-5. 等 Actions 跑完，访问：`https://你的用户名.github.io/playwright-demo/`
+4. 保存后等 1～2 分钟，访问：`https://laurarararararara.github.io/playwrightdemo/`
+
+> 若 Actions 失败，到 [Actions 页面](https://github.com/laurarararararara/playwrightdemo/actions) 查看日志。  
+> 若页面 404，通常是 **Pages 还没选 gh-pages 分支**，按第 3 步检查。
+
+### 手动重新部署
+
+GitHub 仓库 → **Actions** → **Deploy Site** → **Run workflow**
 
 ### 以后更新页面
 
