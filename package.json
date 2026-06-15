@@ -9,6 +9,7 @@
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
     "site": "node scripts/serve.js",
+    "site:about": "node scripts/serve.js",
     "report": "node scripts/show-latest-log.js"
   },
   "devDependencies": {

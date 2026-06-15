@@ -49,6 +49,9 @@ npm run test:headed
 npm run site
 # 浏览器打开 http://127.0.0.1:4173
 
+# 4d. 本地预览个人简历站（静态单页，可打印存 PDF）
+# 浏览器打开 http://127.0.0.1:4173/about/
+
 # 4c. 有界面跑本地练习站用例
 npm run test:headed -- tests/03-demo-site.spec.ts
 
@@ -99,7 +102,9 @@ npm run report
 | Branch | **gh-pages** |
 | Folder | **/ (root)** |
 
-4. 保存后等 1～2 分钟，访问：`https://laurarararararara.github.io/playwrightdemo/`
+4. 保存后等 1～2 分钟，访问：
+   - 练习站：`https://laurarararararara.github.io/playwrightdemo/`
+   - **个人简历站**：`https://laurarararararara.github.io/playwrightdemo/about/`
 
 > 若 Actions 失败，到 [Actions 页面](https://github.com/laurarararararara/playwrightdemo/actions) 查看日志。  
 > 若页面 404，通常是 **Pages 还没选 gh-pages 分支**，按第 3 步检查。

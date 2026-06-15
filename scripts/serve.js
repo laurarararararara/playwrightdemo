@@ -13,7 +13,10 @@ const types = {
 
 http
   .createServer((req, res) => {
-    const pathname = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+    let pathname = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+    if (pathname.endsWith('/')) {
+      pathname += 'index.html';
+    }
     const filePath = path.join(root, pathname);
 
     if (!filePath.startsWith(root)) {
